@@ -1,87 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-x:Class="LayoutSamples.CalculatorGridXAML"
-Title = "Calculator - XAML"
-BackgroundColor="#404040">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="plainButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#eee"/>
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BorderRadius" Value="0"/>
-                <Setter Property="FontSize" Value="40" />
-            </Style>
-            <Style x:Key="darkerButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#ddd"/>
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BorderRadius" Value="0"/>
-                <Setter Property="FontSize" Value="40" />
-            </Style>
-            <Style x:Key="orangeButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#E8AD00"/>
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BorderRadius" Value="0"/>
-                <Setter Property="FontSize" Value="40" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="150" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="0" Grid.Row="0" HorizontalTextAlignment="End" VerticalTextAlignment="End" TextColor="White"
-        FontSize="60" Grid.ColumnSpan="4" />
-            <Button Text = "C" Grid.Row="1" Grid.Column="0"
-        Style="{StaticResource darkerButton}" />
-            <Button Text = "+/-" Grid.Row="1" Grid.Column="1"
-        Style="{StaticResource darkerButton}" />
-            <Button Text = "%" Grid.Row="1" Grid.Column="2"
-        Style="{StaticResource darkerButton}" />
-            <Button Text = "div" Grid.Row="1" Grid.Column="3"
-        Style="{StaticResource orangeButton}" />
-            <Button Text = "7" Grid.Row="2" Grid.Column="0"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "8" Grid.Row="2" Grid.Column="1"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "9" Grid.Row="2" Grid.Column="2"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "X" Grid.Row="2" Grid.Column="3"
-        Style="{StaticResource orangeButton}" />
-            <Button Text = "4" Grid.Row="3" Grid.Column="0"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "5" Grid.Row="3" Grid.Column="1"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "6" Grid.Row="3" Grid.Column="2"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "-" Grid.Row="3" Grid.Column="3"
-        Style="{StaticResource orangeButton}" />
-            <Button Text = "1" Grid.Row="4" Grid.Column="0"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "2" Grid.Row="4" Grid.Column="1"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "3" Grid.Row="4" Grid.Column="2"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "+" Grid.Row="4" Grid.Column="3"
-        Style="{StaticResource orangeButton}" />
-            <Button Text = "0" Grid.ColumnSpan="2"
-        Grid.Row="5" Grid.Column="0" Style="{StaticResource plainButton}" />
-            <Button Text = "." Grid.Row="5" Grid.Column="2"
-        Style="{StaticResource plainButton}" />
-            <Button Text = "=" Grid.Row="5" Grid.Column="3"
-        Style="{StaticResource orangeButton}" />
-        </Grid>
-    </ContentPage.Content>
-</ContentPage>
+In XML file "Main.xml":
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:columnWidth="90dp"
+    android:numColumns="auto_fit"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:stretchMode="columnWidth"
+    android:gravity="center"
+/>
+
+In CS file "Hellogridview.cs":
+protected override void OnCreate (Bundle bundle)
+{
+    base.OnCreate (bundle);
+
+    SetContentView (Resource.Layout.Main);
+
+    var gridview = FindViewById<GridView> (Resource.Id.gridview);
+    gridview.Adapter = new ImageAdapter (this);
+
+    gridview.ItemClick += delegate (object sender, AdapterView.ItemClickEventArgs args) {
+        Toast.MakeText (this, args.Position.ToString (), ToastLength.Short).Show ();
+    };
+}
+
+Create a new class called ImageAdapter that subclasses BaseAdapter:
+public class ImageAdapter : BaseAdapter
+{
+    Context context;
+
+    public ImageAdapter (Context c)
+    {
+        context = c;
+    }
+
+    public override int Count {
+        get { return thumbIds.Length; }
+    }
+
+    public override Java.Lang.Object GetItem (int position)
+    {
+        return null;
+    }
+
+    public override long GetItemId (int position)
+    {
+        return 0;
+    }
+
+    // create a new ImageView for each item referenced by the Adapter
+    public override View GetView (int position, View convertView, ViewGroup parent)
+    {
+        ImageView imageView;
+
+        if (convertView == null) {  // if it's not recycled, initialize some attributes
+            imageView = new ImageView (context);
+            imageView.LayoutParameters = new GridView.LayoutParams (85, 85);
+            imageView.SetScaleType (ImageView.ScaleType.CenterCrop);
+            imageView.SetPadding (8, 8, 8, 8);
+        } else {
+            imageView = (ImageView)convertView;
+        }
+
+        imageView.SetImageResource (thumbIds[position]);
+        return imageView;
+    }
+
+    // references to our images
+    int[] thumbIds = {
+        Resource.Drawable.sample_2, Resource.Drawable.sample_3,
+        Resource.Drawable.sample_4, Resource.Drawable.sample_5,
+        Resource.Drawable.sample_6, Resource.Drawable.sample_7,
+        Resource.Drawable.sample_0, Resource.Drawable.sample_1,
+        Resource.Drawable.sample_2, Resource.Drawable.sample_3,
+        Resource.Drawable.sample_4, Resource.Drawable.sample_5,
+        Resource.Drawable.sample_6, Resource.Drawable.sample_7,
+        Resource.Drawable.sample_0, Resource.Drawable.sample_1,
+        Resource.Drawable.sample_2, Resource.Drawable.sample_3,
+        Resource.Drawable.sample_4, Resource.Drawable.sample_5,
+        Resource.Drawable.sample_6, Resource.Drawable.sample_7
+    };
+}
+
