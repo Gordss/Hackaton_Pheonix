@@ -1,0 +1,35 @@
+Festival info:
+Name: Summer Chaos Festival
+maps: https://www.google.bg/maps/place/%D0%A1%D1%82%D0%B0%D0%B4%D0%B8%D0%BE%D0%BD+%D0%9B%D0%B0%D0%B7%D1%83%D1%80/@42.512877,27.4680511,17z/data=!4m7!1m4!3m3!1s0x40a6948435063047:0x1fe1d840afc9da3f!2z0KHRgtCw0LTQuNC-0L0g0JvQsNC30YPRgA!3b1!3m1!1s0x40a6948435063047:0x1fe1d840afc9da3f
+
+Concert info:
+Name: Coca-Cola Happy Energy Tour
+maps: https://www.google.bg/maps/place/%D0%9F%D0%B0%D0%BD%D1%82%D0%B5%D0%BE%D0%BD%D0%B0,+8000+%D0%91%D1%83%D1%80%D0%B3%D0%B0%D1%81/@42.5012798,27.4808424,17z/data=!3m1!4b1!4m2!3m1!1s0x40a694ec7db27ba9:0x3be7c512d558d4ad
+
+GameJam:
+Name: Hackathon
+maps: https://www.google.bg/maps/place/%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82+%E2%80%9E%D0%9F%D1%80%D0%BE%D1%84.+%D0%B4-%D1%80+%D0%90%D1%81%D0%B5%D0%BD+%D0%97%D0%BB%D0%B0%D1%82%D0%B0%D1%80%D0%BE%D0%B2%E2%80%9C/@42.5265492,27.4471721,16.25z/data=!4m2!3m1!1s0x0000000000000000:0xb9df4ffe9d888867
+
+Diving:
+Name: Underwater Swimming and Diving Competition
+maps:https://www.google.bg/maps/place/Flora+Burgas/@42.497677,27.46783,17z/data=!3m1!4b1!4m2!3m1!1s0x40a694be4e871b71:0x36c74f74cbd88ed0
+
+Parachuting:
+Name:None
+maps:None
+
+Restaurants:
+Name:None
+maps:None
+
+SportEvents:
+Name:None
+maps:None
+
+Surfing:
+Name:None
+maps:None
+
+Sightseeing:
+Name:None
+maps:None
